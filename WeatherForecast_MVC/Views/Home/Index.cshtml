@@ -1,0 +1,24 @@
+﻿@using WeatherForecast_MVC.Data
+@model Weather
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <form id="frmSearch" class="searchbox" method="post">
+        <input id="search" asp-for="Place" type="text" placeholder="City Name" required>
+    </form>
+    <div class="weatherbox">
+        <div class="top"><img id="icon" src="@(ViewBag.Icon != null ? ViewBag.Icon : "http://openweathermap.org/img/wn/02d@2x.png" )" alt="cloudy" /></div>
+        <div class="bottom">
+            <div class="left">
+                <div class="temp"  id="temp"><label >@(Model.Temprature != null ? Model.Temprature+"°" : "0°")</label></div>
+                <div class="desc">
+                    <label id="desc" >@(Model.Description != null ? Model.Description : "Soğuk")</label>
+                    <label id="place">@(Model.Place!= null ? Model.Place.ToUpper() : "Ankara")</label>
+                </div>
+            </div>
+            <div class="right" id="date"><label >@(Model.Date.ToString("MMMM dd"))</label></div>
+        </div>
+    </div>
+</div>
